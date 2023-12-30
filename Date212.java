@@ -20,14 +20,17 @@ public class Date212{
 
     private boolean isValidDate(){
         if (this.month == 2){
-            int tempDay = 28;
-            if (Year.isLeap(this.year)) tempDay = 29;
-            if (this.day < 1 || this.day > tempDay) return false;
+            int tempFebDay = 28;
+            if (Year.isLeap(this.year)) tempFebDay = 29;
+            if (this.day < 1 || this.day > tempFebDay) return false;
         } //checks for leap years, and depending on results alters February's range of days
 
-        if (this.month < 1 || this.month > 12) return false;
-        if (this.day < 1 || this.day > 31) return false;
-        //checks if the month and day are valid
+        if (this.month < 1 || this.month > 12) return false; //checks if the month is valid
+
+        int tempDay = 30;
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) tempDay = 31;
+        if (this.day < 1 || this.day > tempDay) return false;
+        //checks if the day is valid
 
         else return true;
     } //private method that checks if month and day are valid
